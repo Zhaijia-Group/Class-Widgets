@@ -1,4 +1,4 @@
-name: Build and Package PyQt6 Application
+name: Build and Test
 
 on:
   push:
@@ -11,28 +11,32 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install playsound==1.2.2 PyQt6-Fluent-Widgets==1.6.2 PyQt6>=6.7.1
-          pip install pyinstaller
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyinstaller
 
-      - name: Build EXE
-        run: |
-          pyinstaller main.spec
+    - name: List directories
+      run: |
+        echo "Listing audio directory:"
+        ls -R audio
+        echo "Listing config directory:"
+        ls -R config
+        echo "Listing img directory:"
+        ls -R img
+        echo "Listing ui directory:"
+        ls -R ui
 
-      - name: Archive build output
-        uses: actions/upload-artifact@v3
-        with:
-          name: exe-file
-          path: dist/ClassManager.exe
+    - name: Build with PyInstaller
+      run: |
+        pyinstaller main.spec
