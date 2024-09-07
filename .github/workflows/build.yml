@@ -27,10 +27,6 @@ jobs:
         pip install playsound==1.2.2 PyQt6-Fluent-Widgets==1.6.2 PyQt6>=6.7.1
         pip install pyinstaller
 
-    - name: Clean previous builds
-      run: |
-        rm -rf dist build *.spec
-
     - name: List directories
       run: |
         echo "Listing audio directory:"
