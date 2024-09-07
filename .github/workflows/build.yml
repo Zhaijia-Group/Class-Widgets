@@ -26,24 +26,28 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyinstaller
 
+    - name: Clean previous builds
+      run: |
+        rm -rf dist build *.spec
+
     - name: List directories
       run: |
         echo "Listing audio directory:"
-        ls -R audio
+        ls -R audio || echo "audio directory not found"
         echo "Listing config directory:"
-        ls -R config
+        ls -R config || echo "config directory not found"
         echo "Listing img directory:"
-        ls -R img
+        ls -R img || echo "img directory not found"
         echo "Listing ui directory:"
-        ls -R ui
+        ls -R ui || echo "ui directory not found"
 
     - name: Build with PyInstaller
       run: |
-        pyinstaller main.spec
+        pyinstaller main.spec || { echo 'PyInstaller build failed'; exit 1; }
 
     - name: Compress build output
       run: |
-        zip -r build-output.zip dist
+        zip -r build-output.zip dist || { echo 'Failed to zip build output'; exit 1; }
 
     - name: Upload build output
       uses: actions/upload-artifact@v3
