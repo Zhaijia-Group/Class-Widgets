@@ -128,7 +128,7 @@
       <widget class="CaptionLabel" name="CaptionLabel">
        <property name="text">
         <string>此软件基于 PyQt6 开发，其中特别引用 QFluentWidget 作为界面UI，根据协议采用 GPL-3.0 开源协议。
-由 RinLit 开发</string>
+由 RinLit 开发|由 Zhaishis 二创</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -193,7 +193,7 @@
           </size>
          </property>
          <property name="text">
-          <string>此项目的 Github</string>
+          <string>此项目的 WebSite</string>
          </property>
          <property name="hasIcon" stdset="0">
           <bool>false</bool>
@@ -221,7 +221,7 @@
           </size>
          </property>
          <property name="text">
-          <string>我的 哔哩哔哩 主页</string>
+          <string>我的 博客 主页</string>
          </property>
         </widget>
        </item>
