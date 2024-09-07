@@ -97,11 +97,11 @@ class desktop_widget(FluentWindow):
     def setup_about_interface(self):
         github_page = self.findChild(PushButton, "button_github")
         github_page.clicked.connect(lambda: QDesktopServices.openUrl(QUrl(
-            'https://github.com/orgs/Zhaijia-Group/Class-Widgets')))
+            'http://class.zhaishis.cn')))
 
         bilibili_page = self.findChild(PushButton, 'button_bilibili')
         bilibili_page.clicked.connect(lambda: QDesktopServices.openUrl(QUrl(
-            'https://space.bilibili.com/')))
+            'http://me.zhaishis.cn')))
 
     def setup_advance_interface(self):
         margin_spin = self.findChild(SpinBox, 'margin_spin')
